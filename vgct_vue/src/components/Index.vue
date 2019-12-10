@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ game.name }}</h5>
                             <!-- <p class="card-text">{{ game.description }}</p> -->
-                            <router-link :to="{name: 'edit', params: { id: game.id }}" class="btn btn-sm btn-primary">Edit</router-link>
+                            <router-link :to="{name: 'edit', params: { id: game.pk}}" class="btn btn-sm btn-primary">Edit</router-link>
                             <button class="btn btn-danger btn-sm ml-1" v-on:click="deleteGame(game)">Delete</button>
                         </div>
                     </div>
@@ -35,9 +35,10 @@ export default {
     methods: {
         deleteGame: function(g) {
             if (confirm('Delete ' + g.name)) {
-                axios.delete(`http://127.0.0.1:8000/api/games/${g.id}`)
+                axios.delete(`http://127.0.0.1:8000/api/games/${g.pk}`)
                     .then( response => {
                         this.all();
+                        return response;
                     });
             }
         },

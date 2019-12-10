@@ -10,9 +10,9 @@
                     v-model="game.name"
                     v-validate="'required'"
                     name="name"
-                    placeholder="Enter name"
-                    :class="{'is-invalid': errors.has('game.name') && submitted}">
+                    placeholder="Enter name" >
                 <div class="invalid-feedback">
+                    <!-- :class="{'is-invalid': errors.has('game.name') && submitted}"> -->
                     Please provide a valid name.
                 </div>
             </div>
@@ -23,30 +23,30 @@
                     class="form-control"
                     v-validate="'required'"
                     id="date"
-                    v-model="game.date"
-                    :class="{'is-invalid': errors.has('game.date') && submitted}">
+                    v-model="game.date" >
                     <option value="EUR">EUR</option>
+                    <!-- :class="{'is-invalid': errors.has('game.date') && submitted}"> -->
                     <option value="USD">USD</option>
                 </select>
                 <div class="invalid-feedback">
                     Please provide a valid currency.
                 </div>
             </div>
-            <!-- <div class="form-group">
-                <label for="amount">Amount</label>
+            <div class="form-group">
+                <label for="amount">ID</label>
                 <input
                     type="number"
-                    name="amount"
+                    name="ID"
                     v-validate="'required'"
                     class="form-control"
-                    id="amount"
-                    v-model="subscription.amount"
-                    placeholder="Enter amount"
-                    :class="{'is-invalid': errors.has('subscription.amount') && submitted}">
+                    id="ID"
+                    v-model="game.game_id"
+                    placeholder="Enter amount" >
                 <div class="invalid-feedback">
+                    <!-- :class="{'is-invalid': errors.has('game.game_id') && submitted}"> -->
                     Please provide a valid amount.
                 </div>
-            </div> -->
+            </div>
             <!-- <div class="form-group">
                 <label for="description">Description</label>
                 <textarea
@@ -75,12 +75,13 @@ export default {
                 name: '',
                 game_id: '',
                 date: '',
+                pk: '',
             },
             submitted: false
         }
     },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/games/' + this.$route.params.id)
+        axios.get('http://127.0.0.1:8000/api/games/' + this.$route.params.pk + '/')
             .then( response => {
                 // console.log(response.data)
                 this.game = response.data
@@ -94,11 +95,12 @@ export default {
                     return;
                 }
                 axios
-                    .put(`http://127.0.0.1:8000/api/games/${this.game.id}/`,
+                    .put(`http://127.0.0.1:8000/api/games/${this.game.pk}/`,
                         this.game
                     )
                     .then(response => {
                         this.$router.push('/');
+                        return response;
                     })
             });
         }
