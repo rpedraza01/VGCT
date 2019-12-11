@@ -81,7 +81,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/games/' + this.$route.params.pk + '/')
+        axios.get('http://127.0.0.1:8000/api/games/' + this.$route.params.id + '/')
             .then( response => {
                 // console.log(response.data)
                 this.game = response.data
