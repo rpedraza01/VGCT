@@ -76,24 +76,26 @@ export default {
                 name: '',
                 game_id: '',
                 date: '',
+                pk: '',
             },
             submitted: false
         }
     },
     methods: {
-        create: function (e) {
+        create: function () { // e?
             this.$validator.validate().then(result => {
                 this.submitted = true;
                 if (!result) {
                     return;
                 }
-                console.log(this.date)
+                // console.log(this.date)
                 axios
                     .post('http://127.0.0.1:8000/api/games/',
                         this.game
                     )
                     .then(response => {
                         this.$router.push('/');
+                        return response;
                     })
             });
         }
