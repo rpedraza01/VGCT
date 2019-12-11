@@ -18,16 +18,14 @@
             </div>
             <div class="form-group">
                 <label for="date">Year</label>
-                <select
-                    name="date"
+                <input
+                    type="text"
                     class="form-control"
                     v-validate="'required'"
                     id="date"
-                    v-model="game.date" >
-                    <option value="EUR">EUR</option>
-                    <!-- :class="{'is-invalid': errors.has('game.date') && submitted}"> -->
-                    <option value="USD">USD</option>
-                </select>
+                    v-model="game.date" 
+                    name="year"
+                    placeholder="Enter year" >
                 <div class="invalid-feedback">
                     Please provide a valid currency.
                 </div>
