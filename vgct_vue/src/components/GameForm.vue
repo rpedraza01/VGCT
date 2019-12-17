@@ -66,7 +66,7 @@ export default {
                 return
             }
 
-            this.$emit('add:game', this.game)
+            // this.$emit('add:game', this.game)
             this.game = {
                 name: '',
                 game_id: '',
