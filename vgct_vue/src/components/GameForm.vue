@@ -49,8 +49,8 @@ export default {
             success: false,
             game: {
                 name: '',
-                date: '',
                 game_id: '',
+                date: '',
             },
         }
     },
@@ -69,8 +69,8 @@ export default {
             this.$emit('add:game', this.game)
             this.game = {
                 name: '',
-                date: '',
                 game_id: '',
+                date: '',
             }
             this.error = false
             this.success = false
