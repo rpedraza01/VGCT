@@ -4,7 +4,7 @@ from . import views
 
 
 urlpatterns = [
-    path('igdb_api', views.igdb_view, name='home'),
+    path('igdb_api/', views.igdb_view, name='home'),
     path('games/', views.GameList.as_view()),
     path('games/<int:pk>/', views.GameDetail.as_view()),
 
