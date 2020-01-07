@@ -21,20 +21,28 @@ import requests, json
 
 @csrf_exempt
 def igdb_view(request):
-    print(type(json.loads(request.body)))
+    # print(type(json.loads(request.body)))
+    searchData = json.loads(request.body)
 
     # data to f-string and pull info from dictionary above
 
+
+    searchTitle = searchData['title']
+    searchDate = searchData['date']
+    
     url = 'https://api-v3.igdb.com/games'
     headers = {'user-key':'4009373aa92cf83271c12f13e7110994'}
-    data = 'search "grandia"; fields name, release_dates.y, summary; where platforms.name="Dreamcast" & release_dates.y=2001; limit 50;'
+    data = f'search "{searchTitle}"; fields name, release_dates.y, summary; where platforms.name="Xbox" & release_dates.y={searchDate}; limit 50;'
 
     req = requests.post(url, data=data, headers = headers)
     response = req.json()
     # year = response[0]['release_dates'][0]['y']
-    print(type(response))
+    # response = json.dumps(response)
+    # print(type(response))
+    print(response)
+    # response = json.loads(response)
 
-    return JsonResponse(response, safe=False)
+    return JsonResponse({'games': response}, safe=False)
 
 
 # use the api url for a front end (vue) ajax call to display on your page
