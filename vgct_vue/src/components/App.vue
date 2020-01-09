@@ -1,9 +1,9 @@
 <template>
   <div id="app" class="small-container">
     <h1>Games</h1>
-    <Search :search="state.search" @search="handleSearch" />
+    <GameSearch :search="state.search" @search="handleSearch" />
     <div class="games">
-      <GamesResults v-for="gameResult in state.gameResults" :gameResult="gameResult" :key="gameResult.igdbID" />
+      <GameResults v-for="gameResult in state.gameResults" :gameResult="gameResult" :key="gameResult.igdbID" />
     </div>
 
     <game-form :games="games" @add:game="addGame" />
@@ -13,11 +13,12 @@
 </template>
 
 <script>
-import{ reactive, watch } from '@vue/composition-api';
-import GameTable from "@/components/GameTable.vue";
-import GameForm from "@/components/GameForm.vue";
-import GameSearch from "@/components/GameSearch.vue";
-import GameResults from "@/components/GameResults.vue";
+// import{ reactive, watch } from '@vue/composition-api';
+import GameTable from "./GameTable.vue";
+import GameForm from "./GameForm.vue";
+import GameSearch from "./GameSearch.vue";
+import GameResults from "./GameResults.vue";
+import { useGameAPI } from '../hooks/game-api';
 
 function getCookie(name) {
   var cookieValue = null;
@@ -41,21 +42,30 @@ export default {
     GameTable,
     GameForm,
     GameSearch,
-    GameResults
+    GameResults,
   },  
   setup(){
-    const state = reactive({
-      search: "",
-      loading: true,
-      gameResults: [],
-      errorMessage: null
-    })
+    const state = useGameAPI();
+    
+    return {
+      state,
+      handleSearch(searchTerm) {
+        state.loading = true;
+        state.search = searchTerm;
+      }
+    };
+    // reactive({
+    //   search: "",
+    //   loading: true,
+    //   gameResults: [],
+    //   errorMessage: null
+    // })
 
-    watch(() => {
-      const
-    })
+    // watch(() => {
+    //   const
+    // })
   
-    },
+  },
 
   data() {
     return {

@@ -21,13 +21,19 @@ import requests, json
 
 @csrf_exempt
 def igdb_view(request):
+    print(request.body)
+
+    searchData = request.body.decode('utf-8')
+
     # print(type(json.loads(request.body)))
-    searchData = json.loads(request.body)
+    searchData = json.loads(searchData)
+    print(type(searchData))
 
     # data to f-string and pull info from dictionary above
 
 
     searchTitle = searchData['title']
+    print(type(searchTitle))
     searchDate = searchData['date']
     
     url = 'https://api-v3.igdb.com/games'
@@ -39,7 +45,7 @@ def igdb_view(request):
     # year = response[0]['release_dates'][0]['y']
     # response = json.dumps(response)
     # print(type(response))
-    print(response)
+    print("response", response)
     # response = json.loads(response)
 
     return JsonResponse({'games': response}, safe=False)
