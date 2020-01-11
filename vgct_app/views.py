@@ -7,6 +7,7 @@ from .serializers import GameSerializer
 from rest_framework import generics
 
 import requests, json
+from . import secrets
 
 # # import it
 # from django.http import JsonResponse
@@ -34,11 +35,13 @@ def igdb_view(request):
 
     searchTitle = searchData['title']
     print(type(searchTitle))
-    searchDate = searchData['date']
+    # searchDate = int(searchData['date'])
     
     url = 'https://api-v3.igdb.com/games'
-    headers = {'user-key':'4009373aa92cf83271c12f13e7110994'}
-    data = f'search "{searchTitle}"; fields name, release_dates.y, summary; where platforms.name="Xbox" & release_dates.y={searchDate}; limit 50;'
+    headers = secrets.api_key
+    data = f'search "{searchTitle}"; fields name, release_dates.y, summary; where platforms.name="Xbox" & release_dates.y=2001; limit 50;'
+    print(type(data))
+    print(data)
 
     req = requests.post(url, data=data, headers = headers)
     response = req.json()

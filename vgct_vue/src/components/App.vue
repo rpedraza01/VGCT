@@ -2,8 +2,8 @@
   <div id="app" class="small-container">
     <h1>Games</h1>
     <GameSearch :search="state.search" @search="handleSearch" />
-    <div class="games">
-      <GameResults v-for="gameResult in state.gameResults" :gameResult="gameResult" :key="gameResult.igdbID" />
+    <div class="results">
+      <GameResults v-for="results in state.results" :results="results" :key="results.title" />
     </div>
 
     <game-form :games="games" @add:game="addGame" />
@@ -49,9 +49,9 @@ export default {
     
     return {
       state,
-      handleSearch(searchTerm) {
+      handleSearch(queryText) {
         state.loading = true;
-        state.search = searchTerm;
+        state.search = queryText;
       }
     };
     // reactive({

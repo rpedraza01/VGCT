@@ -1,22 +1,24 @@
 <template>
-    <div class="game">
-        <h2>{{ game.name }}</h2>
+    <div class="results">
+        <h2>{{ results }}</h2>
         <div>
-            <img width="200" :alt="altText" :src="game.name"/>
+            <img width="200" :alt="altText" :src="results.name"/>
         </div>
-        <p>{{ game.date }}</p>
+        <p>{{ results.date }}</p>
     </div>
 </template>
 
 <script>
 import { computed } from "@vue/composition-api";
 export default {
-    name: "Game",
-    props: ['game'],
-    setup({ game }) {
-        const altText = computed(() => `The Game Titled: ${game.name}`);
+    name: "Results",
+    props: ['results'],
+    setup({ results }) {
+        const altText = computed(() => `The Game Titled: ${results.name}`);
 
         return { altText };
-    }
+    },
+    // alert(props)
 };
+
 </script>
