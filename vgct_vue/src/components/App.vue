@@ -2,20 +2,21 @@
   <div id="app" class="small-container">
     <h1>Games</h1>
     <GameSearch :search="state.search" @search="handleSearch" />
+
     <div class="results">
-      <GameResults v-for="results in state.results" :results="results" :key="results.title" />
+      <GameResults v-for="result in state.results.games" :result="result" :key="result.id" />
     </div>
 
-    <game-form :games="games" @add:game="addGame" />
+    <!-- <game-form :games="games" @add:game="addGame" />
 
-    <game-table :games="games" @delete:game="deleteGame" @edit:game="editGame" />
+    <game-table :games="games" @delete:game="deleteGame" @edit:game="editGame" /> -->
   </div>
 </template>
 
 <script>
 // import{ reactive, watch } from '@vue/composition-api';
-import GameTable from "./GameTable.vue";
-import GameForm from "./GameForm.vue";
+// import GameTable from "./GameTable.vue";
+// import GameForm from "./GameForm.vue";
 import GameSearch from "./GameSearch.vue";
 import GameResults from "./GameResults.vue";
 import { useGameAPI } from '../hooks/game-api';
@@ -39,8 +40,8 @@ function getCookie(name) {
 export default {
   name: "app",
   components: {
-    GameTable,
-    GameForm,
+    // GameTable,
+    // GameForm,
     GameSearch,
     GameResults,
   },  

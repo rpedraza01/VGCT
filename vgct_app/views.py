@@ -39,7 +39,7 @@ def igdb_view(request):
     
     url = 'https://api-v3.igdb.com/games'
     headers = secrets.api_key
-    data = f'search "{searchTitle}"; fields name, release_dates.y, summary; where platforms.name="Xbox" & release_dates.y=2001; limit 50;'
+    data = f'search "{searchTitle}"; fields name, release_dates.y, cover.image_id summary; where platforms.name="Xbox"; limit 50;'
     print(type(data))
     print(data)
 

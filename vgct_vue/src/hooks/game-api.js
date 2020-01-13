@@ -25,8 +25,8 @@ export const useGameAPI = () => {
         })
             .then(response => response.json())
             .then(jsonResponse => {
-                state.results = jsonResponse.GameSearch;
-                alert(jsonResponse.GameSearch);
+                state.results = jsonResponse;
+                // alert(jsonResponse.GameSearch);
                 state.loading = false;
             });
     });
