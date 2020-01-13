@@ -2,7 +2,7 @@
     <div class="results">
         <h2>{{ result.name }}</h2>
         <div>
-            <img width="200" :alt="altText" :src="result.name"/>
+            <img height="100" :alt="altText" :src="result.cover.url"/>
         </div>
         <p>{{ result.date }}</p>
     </div>
