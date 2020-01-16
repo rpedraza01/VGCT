@@ -4,7 +4,7 @@
     <GameSearch :search="state.search" @search="handleSearch" />
 
     <div class="results">
-      <GameResults v-for="result in state.results.games" :result="result" :key="result.id" />
+      <GameResults v-for="result in state.results.games" :result="result" :key="result.id" @add:game="addGame" />
     </div>
 
     <!-- <game-form :games="games" @add:game="addGame" />
@@ -100,6 +100,7 @@ export default {
         }
       });
       const data = await response.json();
+      alert("Game Added!")
       this.games = [...this.games, data];
       // } catch (error) {}
     },
