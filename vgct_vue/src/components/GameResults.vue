@@ -8,7 +8,10 @@
             <p>{{ result.release_dates[0].y }}</p>
             <p>{{ result.genres.name }}</p>
             <p>{{ result.total_rating }}</p>
-            <p>{{ result.involved_companies.company.name }}</p>
+            <p>{{ result.involved_companies[0].company.name }}</p>
+            <!-- <p v-for="c in result.involved_companies" :key="c.id">
+                {{ c.company.name }}
+            </p> -->
             <div style="visibility:hidden;">
                 <input v-model="result.id"/>
                 <input v-model="result.name"/>
@@ -17,7 +20,6 @@
                 <input v-model="result.total_rating"/>
                 <input v-model="result.cover.url"/>
                 <input v-model="result.url"/>
-                <input v-model="result.involved_companies.company.name"/>
             </div>
             <br>
             <button>Add Game</button>

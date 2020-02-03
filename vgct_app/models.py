@@ -7,7 +7,7 @@ class Game(models.Model):
     summary = models.TextField(null=True, blank=True, default="")
     rating = models.FloatField(null=True, blank=True, default=0)
     cover = models.TextField(null=True, blank=True, default="")
-    cover = models.TextField(null=True, blank=True, default="")
+    url = models.TextField(null=True, blank=True, default="")
 
 
     def __str__(self):
