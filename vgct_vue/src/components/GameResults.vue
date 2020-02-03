@@ -1,15 +1,24 @@
 <template>
     <div class="results">
         <form @submit.prevent="handleSubmit">
-            <input style="visibility:hidden;" v-model="result.name"/>
             <h2>{{ result.name }}</h2>
-            <input style="visibility:hidden;" v-model="result.id"/>
-            
             <div>
-                <img height="100" :alt="altText" :src="result.cover.url"/>
+                <a href="result.url"><img height="100" :alt="altText"  :src="result.cover.url"/></a>
             </div>
-            <p>{{ result.date }}</p>
-            <input style="visibility:hidden;" v-model="result.release_dates[0].y"/>
+            <p>{{ result.release_dates[0].y }}</p>
+            <p>{{ result.genres.name }}</p>
+            <p>{{ result.total_rating }}</p>
+            <p>{{ result.involved_companies.company.name }}</p>
+            <div style="visibility:hidden;">
+                <input v-model="result.id"/>
+                <input v-model="result.name"/>
+                <input v-model="result.release_dates[0].y"/>
+                <input v-model="result.summary"/>
+                <input v-model="result.total_rating"/>
+                <input v-model="result.cover.url"/>
+                <input v-model="result.url"/>
+                <input v-model="result.involved_companies.company.name"/>
+            </div>
             <br>
             <button>Add Game</button>
         </form>
@@ -32,6 +41,10 @@ export default {
                 name: this.result.name,
                 game_id: this.result.id,
                 date: this.result.release_dates[0].y,
+                summary: this.result.summary,
+                rating: this.result.total_rating,
+                cover: this.result.cover.url,
+                url: this.result.url,
             }
             this.$emit('add:game', game)
             // this.$refs.first.focus()
