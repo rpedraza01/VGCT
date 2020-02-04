@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="small-container">
+    <Header :title="'VGCT'" />
     <h1>Games</h1>
     <GameSearch :search="state.search" @search="handleSearch" />
 
@@ -19,6 +20,7 @@
 // import GameForm from "./GameForm.vue";
 import GameSearch from "./GameSearch.vue";
 import GameResults from "./GameResults.vue";
+import Header from "./Header.vue";
 import { useGameAPI } from '../hooks/game-api';
 
 function getCookie(name) {
@@ -42,6 +44,7 @@ export default {
   components: {
     // GameTable,
     // GameForm,
+    Header,
     GameSearch,
     GameResults,
   },  

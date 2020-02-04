@@ -1,6 +1,7 @@
 from django.db import models
 
 class Game(models.Model):
+    owner = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     name = models.CharField(null=True, blank=True, default="", max_length=100)
     game_id = models.IntegerField(null=True, blank=True, default=0)
     date = models.IntegerField(null=True, blank=True, default=0)
