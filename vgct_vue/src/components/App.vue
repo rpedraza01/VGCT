@@ -2,6 +2,8 @@
   <div id="app" class="small-container">
     <Header :title="'VGCT'" />
     <h1>Games</h1>
+    <JWTTest></JWTTest>
+    <Login></Login>
     <GameSearch :search="state.search" @search="handleSearch" />
 
     <div class="results">
@@ -22,6 +24,8 @@ import GameSearch from "./GameSearch.vue";
 import GameResults from "./GameResults.vue";
 import Header from "./Header.vue";
 import { useGameAPI } from '../hooks/game-api';
+import JWTTest from '../views/JWTTest.vue';
+import Login from '../views/Login.vue';
 
 function getCookie(name) {
   var cookieValue = null;
@@ -47,6 +51,8 @@ export default {
     Header,
     GameSearch,
     GameResults,
+    JWTTest,
+    Login
   },  
   setup(){
     const state = useGameAPI();
