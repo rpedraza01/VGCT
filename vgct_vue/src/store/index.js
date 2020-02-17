@@ -114,7 +114,7 @@ export default new Vuex.Store({
         deleteToken() {
             this.commit("removeToken")
             this.commit("unsetAuthUser")
-            router.push({name: "login"})
+            // router.push({name: "login"})
         },
         // use Axios to refresh existing JWT (no username/password needed with refresh, just refresh token)
         refreshToken() {

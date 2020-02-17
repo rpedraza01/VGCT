@@ -43,7 +43,7 @@ const routes = [
 	// 	// Only allow entering kiosk if authenticated
 	// 	beforeEnter (to, from, next){
 	// 		if(store.state.isAuthenticated){
-	// 			store.dispatch('setKioskMode', true)
+	// 			store.('setKioskMode', true)
 	// 			next()
 	// 		} else {
 	// 			next('/login')

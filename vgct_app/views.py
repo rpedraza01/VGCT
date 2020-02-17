@@ -49,7 +49,7 @@ def igdb_view(request):
     # year = response[0]['release_dates'][0]['y']
     # response = json.dumps(response)
     # print(type(response))
-    print("response", response)
+    # print("response", response)
     # response = json.loads(response)
 
     return JsonResponse({'games': response}, safe=False)

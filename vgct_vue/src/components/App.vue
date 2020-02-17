@@ -134,7 +134,10 @@ export default {
       this.games = this.games.filter(game => game.pk !== pk);
       // } catch (error) {}
     }
-  }
+  },
+  created(){
+    // this.$store.dispatch('tryAutoLogin')
+  },
 };
 </script>
 
