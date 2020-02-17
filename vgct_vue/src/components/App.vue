@@ -10,16 +10,16 @@
       <GameResults v-for="result in state.results.games" :result="result" :key="result.id" @add:game="addGame" />
     </div>
 
-    <!-- <game-form :games="games" @add:game="addGame" />
+    <game-form :games="games" @add:game="addGame" />
 
-    <game-table :games="games" @delete:game="deleteGame" @edit:game="editGame" /> -->
+    <game-table :games="games" @delete:game="deleteGame" @edit:game="editGame" />
   </div>
 </template>
 
 <script>
 // import{ reactive, watch } from '@vue/composition-api';
-// import GameTable from "./GameTable.vue";
-// import GameForm from "./GameForm.vue";
+import GameTable from "./GameTable.vue";
+import GameForm from "./GameForm.vue";
 import GameSearch from "./GameSearch.vue";
 import GameResults from "./GameResults.vue";
 import Header from "./Header.vue";
@@ -46,8 +46,8 @@ function getCookie(name) {
 export default {
   name: "app",
   components: {
-    // GameTable,
-    // GameForm,
+    GameTable,
+    GameForm,
     Header,
     GameSearch,
     GameResults,
